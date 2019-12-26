@@ -1,0 +1,6 @@
+<a href="{{ if $.Site.Params.Logo.LogoHomeLink }}{{ $.Site.Params.Logo.LogoHomeLink }}{{else}}{{ $.Site.BaseURL }}{{ end }}" class="logo" style="text-decoration: none;">
+    <img src="{{ $.Site.Params.Logo.path }}" alt="{{ $.Site.Params.Logo.alt }}" />
+    <span class="logo__mark">{{ partial "greater-icon.html" . }}</span>
+    <span class="logo__text">{{ with $.Site.Params.Logo.logoText2 }}{{ . }}{{ else }}maxh.tk{{ end }}</span>
+    <span class="logo__cursor"></span>
+</a>

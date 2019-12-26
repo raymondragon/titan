@@ -1,0 +1,62 @@
+{{ define "main" }}
+  <script src="{{ "assets/prism.js" | absURL }}"></script>
+  <script src="{{ "assets/smooth-scroll.polyfills.min.js" | absURL }}"></script>
+  <script>var scroll = new SmoothScroll('a[href*="#"]', { speed: 200 });</script>
+  <div class="post">
+    <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+    <div class="post-meta">
+      {{ with .Date | default nil }}
+        <span class="post-date">
+            &#11596; {{ .Format ($.Site.Params.DateFormatSingle | default "2006-01-02") }} | 
+        </span>
+      {{ end }}
+      <span> &#11585; 字数 {{ .WordCount}} words</span>
+    </div>
+    {{ if .Params.Cover }}
+      <img src="{{ .Params.Cover | absURL }}" class="post-cover" alt="{{ .Params.Cover }}"/>
+    {{ end }}
+    <div class="post-content">
+      {{ .Content }}
+      <div>&nbsp;</div>
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"> END </span>
+          <hr />
+        </div>
+      </div>
+      <div> • 本文作者 | Author info >> <a href="https://t.me/mue736">冰川大魔王(Maxh)</a></div>
+      <div> • 来源链接 | Source link >> <a href="{{ .Permalink}}">{{ .Title }}</a></div>
+      <div> • 发表评论 | Make comments >></div>
+      <div>&nbsp;</div>
+    </div>
+    <!--valine-->
+    {{- if .Site.Params.valine.enable -}}
+    <div id="vcomments"></div>
+    <link rel="stylesheet" href="{{ "assets/valine-plus.css" | absURL }}"/>
+    <script src="{{ "assets/av-min.js" | absURL }}"></script>
+    <script src="{{ "assets/Valine.min.js" | absURL }}"></script>
+    <script type="text/javascript">
+      new Valine({
+          el: '#vcomments',
+          appId: '{{ .Site.Params.valine.appId }}',
+          appKey: '{{ .Site.Params.valine.appKey }}',
+          notify: {{ .Site.Params.valine.notify }}, 
+          verify: {{ .Site.Params.valine.verify }}, 
+          avatar:'{{ .Site.Params.valine.avatar }}', 
+          placeholder: '{{ .Site.Params.valine.placeholder }}',
+          lang: '{{ .Site.Params.valine.lang }}',
+          avatarForce: false,
+      });
+    </script>
+    {{- end }}
+    <!--top-->
+    <a href="#top" class="backtop">{{ partial "arrow-top.html" . }}</a>
+    <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"> MARSGRID </span>
+          <hr />
+        </div>
+    </div>
+    <div>&nbsp;</div>
+  </div>
+{{ end }}

@@ -1,0 +1,14 @@
+<footer class="footer">
+  <div class="footer__inner">
+    {{ partial "logo2.html" . }}
+    <div class="copyright">
+        <span>Copyright © {{ now.Year }} 火星格</span>
+        <span id="busuanzi_container_site_pv">点击量&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;Clicks</span>
+    </div>
+  </div>
+</footer>
+<script async src="{{ "assets/counter.js" | absURL }}"></script>
+<script async src="{{ "assets/main.js" | absURL }}"></script>
+
+{{- partial "extended_footer.html" . }}
+

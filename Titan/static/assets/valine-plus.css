@@ -1,0 +1,63 @@
+.v .power {
+    display: none
+}
+
+.v .vwrap {
+    border: 1px solid #b3b1b1;
+    border-radius: 8px;
+}
+
+.v .vinput {
+    color: #b3b1b1
+}
+
+.v a {
+    color: #358096
+}
+
+.v a:before {
+    background: #358096
+}
+
+.v a:hover {
+    color: #4285F4
+}
+
+.v .vwrap .vheader .vinput {
+    border-radius: 0px;
+    border-bottom-color: #b3b1b1;
+    border-bottom-style: solid;
+}
+
+.v .vlist .vcard .vquote {
+    border-left-color: #b3b1b1
+}
+
+.v * {
+    color: #b3b1b1;
+    font-family: Inter;
+}
+
+.v .vlist .vcard .vh {
+    border-bottom-color: #b3b1b1
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #358096
+}
+
+.v .vlist .vcard .vh .vmeta .vat,.v .vlist .vcard .vhead .vnick:hover {
+    color: #358096
+}
+
+.v .vlist .vcard .vhead .vnick:before {
+    background: #358096
+}
+
+.v .vlist .vcard .vhead .vsys {
+    background: 0 0
+}
+
+.v .vlist .vcard .vimg {
+    border-radius: 20%;
+}

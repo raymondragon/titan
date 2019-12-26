@@ -1,0 +1,34 @@
+{{ define "main" }}
+  <div class="posts">
+    {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
+    {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" $contentTypeName) }}
+    {{ range $paginator.Pages }}
+    <div class="post on-list">
+      <h1 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
+      <div class="post-meta">
+        <span class="post-date">
+          &#11596; {{ .Date.Format ($.Site.Params.DateFormatList | default "2006-01-02") }} | 
+        </span>
+        <span class="word-count"> &#11585; 字数 {{ .WordCount }} words</span>
+      </div>
+      {{ if .Params.Cover }}
+        <a href="{{ .Permalink }}"><img src="{{ .Params.Cover | absURL }}" class="post-cover" alt="{{ .Params.Cover }}"/></a>
+      {{ end }}
+      <div class="post-content">
+        {{ with .Description }}
+          {{ . | markdownify }}
+        {{ else }}
+          {{ if .Truncated }}
+            {{ .Summary | markdownify }}
+          {{ end }}
+        {{ end }}
+      </div>
+      <div>&nbsp;</div>
+    </div>
+    {{ end }}
+    <div>&nbsp;</div>
+    {{ partial "pagination.html" . }}
+    <div>&nbsp;</div>
+  </div>
+{{ end }}
